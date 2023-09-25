@@ -3,9 +3,38 @@ THINGS TO COVER BEFORE RESUMPTION
 
 # [List of allowed functions and system calls]
 
-- access (man 2 access)
-- chdir (man 2 chdir)
-- close (man 2 close)
+1. **access (man 2 access)**
+   ### include <unistd.h>
+
+       int access(const char *pathname, int mode);
+checks whether the calling process can access the file
+       pathname.  If pathname is a symbolic link, it is dereferenced.
+
+ The mode specifies the accessibility check(s) to be performed,
+       and is either the value F_OK, or a mask consisting of the bitwise
+       OR of one or more of R_OK, W_OK, and X_OK.  F_OK tests for the
+       existence of the file.  R_OK, W_OK, and X_OK test whether the
+       file exists and grants read, write, and execute permissions,
+       respectively.
+
+      int file_exists = access(file, F_OK)
+
+_if file exists returns '0', then the file exists_
+
+2. **chdir (man 2 chdir)**
+   
+ chdir()  changes  the  current working directory of the calling process to the directory specified in path. 
+ 
+ The current working directory is the
+       starting point for interpreting relative pathnames (i.e., pathnames not starting with '/').
+
+   #include <unistd.h>
+
+       int chdir(const char *path);
+        /* example */
+       int result = chdir(path); 
+- On success, zero is returned.  On error, -1 is returned, and errno is set appropriately.
+3. **close (man 2 close)**
 - closedir (man 3 closedir)
 - execve (man 2 execve)
 - exit (man 3 exit)
