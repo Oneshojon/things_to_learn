@@ -94,7 +94,7 @@ The exit() function causes normal process termination and the
        streams.
 
        Upon successful completion 0 is returned.  Otherwise, EOF is
-       returned and errno is set to indicate the error.
+       returned and errno is set to indicate the error.,
   
 - fork (man 2 fork)
 - free (man 3 free)
