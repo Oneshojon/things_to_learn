@@ -35,11 +35,67 @@ _if file exists returns '0', then the file exists_
        int result = chdir(path); 
 - On success, zero is returned.  On error, -1 is returned, and errno is set appropriately.
 3. **close (man 2 close)**
-- closedir (man 3 closedir)
-- execve (man 2 execve)
-- exit (man 3 exit)
-- _exit (man 2 _exit)
-- fflush (man 3 fflush)
+
+           include <unistd.h>
+           int close(int fd);
+
+  close() returns zero on success.  On error, -1 is returned, and
+       errno is set to indicate the error.
+4. closedir (man 3 closedir)
+  
+5. **execve (man 2 execve)**
+
+  #include <unistd.h>
+
+       int execve(const char *pathname, char *const _Nullable argv[],
+                  char *const _Nullable envp[]);
+
+const char *filename: This parameter specifies the path to the executable file of the new program you want to run.
+
+char *const argv[]: This is an array of strings that represent the command-line arguments passed to the new program. The first element (argv[0]) conventionally contains the program's name.
+
+char *const envp[]: This is an array of strings representing the environment variables to be passed to the new program.
+
+6. **exit (man 3 exit)**
+
+ #include <stdlib.h>
+
+       [[noreturn]] void exit(int status);
+
+The exit() function causes normal process termination and the
+       least significant byte of status (i.e., status & 0xFF) is
+       returned to the parent (see wait(2)).
+   
+6. **_exit (man 2 _exit)**
+
+    #include <unistd.h>
+
+       [[noreturn]] void _exit(int status);
+
+   
+7. **fflush (man 3 fflush)**
+
+ #include <stdio.h>
+
+       int fflush(FILE *stream);
+
+ For output streams, fflush() forces a write of all user-space
+       buffered data for the given output or update stream via the
+       stream's underlying write function.
+
+       For input streams associated with seekable files (e.g., disk
+       files, but not pipes or terminals), fflush() discards any
+       buffered data that has been fetched from the underlying file, but
+       has not been consumed by the application.
+
+       The open status of the stream is unaffected.
+
+       If the stream argument is NULL, fflush() flushes all open output
+       streams.
+
+       Upon successful completion 0 is returned.  Otherwise, EOF is
+       returned and errno is set to indicate the error.
+  
 - fork (man 2 fork)
 - free (man 3 free)
 - getcwd (man 3 getcwd)
@@ -58,7 +114,9 @@ _if file exists returns '0', then the file exists_
 - lstat (__lxstat) (man 2 lstat)
 - fstat (__fxstat) (man 2 fstat)
 - strtok (man 3 strtok)
-- wait (man 2 wait)
+- 
+1. **wait (man 2 wait)**
+   
 - waitpid (man 2 waitpid)
 - wait3 (man 2 wait3)
 - wait4 (man 2 wait4)
