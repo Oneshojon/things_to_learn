@@ -96,7 +96,20 @@ The exit() function causes normal process termination and the
        Upon successful completion 0 is returned.  Otherwise, EOF is
        returned and errno is set to indicate the error.,
   
-- fork (man 2 fork)
+8. fork (man 2 fork)
+
+         include <unistd.h>
+
+         pid_t fork(void);
+
+ -  fork() creates a new process by duplicating the calling process.
+       The new process is referred to as the child process.  The calling
+       process is referred to as the parent process.
+- On success, the PID of the child process is returned in the
+       parent, and 0 is returned in the child.  On failure, -1 is
+       returned in the parent, no child process is created, and errno is
+       set to indicate the error.
+   
 - free (man 3 free)
 - getcwd (man 3 getcwd)
 - getline (man 3 getline)
