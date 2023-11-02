@@ -141,9 +141,16 @@ The exit() function causes normal process termination and the
        returned in the parent, no child process is created, and errno is
        set to indicate the error.
    
-- free (man 3 free)
-- getcwd (man 3 getcwd)
-- getline (man 3 getline)
+9. free (man 3 free)
+    
+10. getcwd (man 3 getcwd)
+  
+11. getline (man 3 getline)
+         #include <stdio.h>
+          ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+    getline() reads an entire line from stream, storing the address of the buffer containing the text into *lineptr.
+
+    On success, getline() return the number of characters read, including the delimiter character, but not including the terminating null byte. This value can be used to handle embedded null bytes in the line read.
 - getpid (man 2 getpid)
 - isatty (man 3 isatty)
 - kill (man 2 kill)
@@ -151,9 +158,13 @@ The exit() function causes normal process termination and the
 - open (man 2 open)
 - opendir (man 3 opendir)
 - perror (man 3 perror)
+      #include <stdio.h>
+      void perror(const char *s);
+  
 - read (man 2 read)
 - readdir (man 3 readdir)
 - signal (man 2 signal)
+  
 - stat (__xstat) (man 2 stat)
 - lstat (__lxstat) (man 2 lstat)
 - fstat (__fxstat) (man 2 fstat)
